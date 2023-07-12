@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker Salary</title>
+</head>
+
+<style>
+    html{
+        margin: 50px;
+    }
+</style>
+
+<body>
+    <h1>Worker Salary</h1>
+    <label>ID</label>
+    <input class="InputWorkerId" type="text"><br>
+    <label>Name</label>
+    <input class="InputWorkerName" type="text"><br>
+    <label>Salary ($)</label>
+    <input class="InputBaseSalary" type="number"><br>
+    <label>Hour</label>
+    <input class="InputWorkingHours" type="number"><br>
+    <input type="button" onclick="calculate()" value="Submit">
+    <input type="button" onclick="cls()" value="Clear">
+
+    <h1><hr size="5px" color="black"></h1>
+    
+    <h1>Result</h1>
+    <label>Worker ID: </label>
+    <label class="workerID"></label><br>
+    <label>Worker Name: </label>
+    <label class="workerName"></label><br>
+    <label>Base Salary ($): </label>
+    <label class="baseSalary"></label><br>
+    <label>Working Hour: </label>
+    <label class="workingHours"></label><br>
+    <label>Total Salary ($): </label>
+    <label class="totalSalary"></label><br>
+
+    <script>
+        let workerId = document.querySelector(".InputWorkerId");
+        let workerName = document.querySelector(".InputWorkerName");
+        let baseSalary = document.querySelector(".InputBaseSalary");
+        let workingHours = document.querySelector(".InputWorkingHours");
+
+        let asw1 = document.querySelector(".workerID");
+        let asw2 = document.querySelector(".workerName");
+        let asw3 = document.querySelector(".baseSalary");
+        let asw4 = document.querySelector(".workingHours");
+        let asw5 = document.querySelector(".totalSalary");
+
+        function calculate(){
+            asw1.innerHTML = workerId.value;
+            asw2.innerHTML = workerName.value;
+            asw3.innerHTML = baseSalary.value;
+            asw4.innerHTML = workingHours.value;
+
+            if(workingHours.value <= 190){
+                asw5.innerHTML = baseSalary.value;
+            }else if(workingHours.value <= 200){
+                asw5.innerHTML = Number(baseSalary.value) + ((workingHours.value - 190) * 10);
+            }else if(workingHours.value <= 210){
+                asw5.innerHTML = Number(baseSalary.value) + ((workingHours.value - 190) * 15);
+            }else{
+                asw5.innerHTML = Number(baseSalary.value) + 300;
+            }
+        }
+
+        function cls(){
+            location.reload();
+        }
+    </script>
+</body>
+</html>
